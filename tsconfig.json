@@ -3,6 +3,7 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "baseUrl": ".", // Sets the project root as the base directory for resolving non-relative module imports
     "paths": {
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
