@@ -1,0 +1,85 @@
+---
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+---
+
+<BaseLayout>
+	
+	<main id="main">
+
+		<div id="sidebar_column">
+			<slot name="slot_sidebar" />
+		</div>
+
+		<div id="content_column">
+			<slot name="slot_content" />
+		</div>
+
+	</main>
+
+</BaseLayout>
+
+<style lang="scss">
+
+	$CONTENT_WIDTH: 1000px;
+	$SIDEBAR_WIDTH: 300px;
+	$COLUMN_GAP: 10px;
+
+	$MARGIN_TOP: 25px;
+
+	$SWITCH_TO_FLOATING_SIDEBAR: calc($CONTENT_WIDTH + $SIDEBAR_WIDTH + $COLUMN_GAP);
+
+	/* Single Column Layout */
+	main {
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+
+		margin-top: $MARGIN_TOP;
+
+		#sidebar_column {
+			display: flex;
+			flex-direction: column;
+
+			max-width: $CONTENT_WIDTH;
+			width: 100%;
+		}
+
+		#content_column {
+			display: flex;
+			flex-direction: column;
+
+			max-width: $CONTENT_WIDTH;
+			width: 100%;
+		}
+
+	}
+
+	/* Dual Column Layout */
+	@media (min-width: $SWITCH_TO_FLOATING_SIDEBAR) {
+
+		main {
+
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: center;
+
+			#sidebar_column {
+				position: sticky;
+				width: $SIDEBAR_WIDTH;
+				height: calc(100vh - $MARGIN_TOP);
+				top: 0px;
+			}
+
+			#content_column {
+				margin-left: $COLUMN_GAP;
+			}
+
+		}
+
+	}
+
+</style>

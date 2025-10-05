@@ -1,0 +1,28 @@
+---
+
+const { height } = Astro.props;
+
+---
+
+<div class="pacman"></div>
+
+<style define:vars={{ height }}>
+
+    .pacman {
+        height: var(--height);
+        aspect-ratio: 1;
+        z-index: 1;
+        position: absolute;
+    }
+
+    .pacman {
+        background: var(--text-color-accent);
+
+        --start: 120deg;
+        --fill: 300deg;
+        
+        border-radius: 50%;
+        mask: conic-gradient(from var(--start),#0000,#000 1deg var(--fill),#0000 calc(var(--fill) + 1deg));
+    }
+
+</style>

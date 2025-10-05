@@ -1,0 +1,53 @@
+---
+
+import headshot from '/src/assets/headshot.png';
+
+---
+
+<div class="bio">
+	<img class="headshot" src={ headshot.src } />
+	<div class="name">Chris Williams</div>
+	<div class="blurb">Software Developer</div>
+</div>
+
+<style>
+
+	.bio {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.bio {
+
+		xbackground-color: var(--background-color-850);
+		background: linear-gradient(159deg, var(--background-color-750) 0%, var(--background-color-800) 100%);
+		padding-top: 25px;
+
+		.headshot {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+		}
+
+		.name {
+			font-size: 2rem;
+			font-weight: var(--bold);
+			padding-top: 10px;
+		}
+
+		.xblurb {
+			font-size: 1.1rem;
+			line-height: 1.1rem;
+			margin-top: 1rem;
+		}
+
+		.blurb {
+			color: var(--text-color-secondary);
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+	}
+
+</style>

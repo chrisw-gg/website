@@ -1,0 +1,33 @@
+---
+
+import Bio from '@components/sidebar/Bio.astro';
+import Skills from '@components/sidebar/Skills.astro';
+import Socials from '@components/sidebar/Socials.astro';
+
+---
+
+<Bio />
+<div class="content">
+    <Skills />
+    <Socials />
+</div>
+
+<style>
+
+    .content {
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1;
+        
+        background-color: var(--background-color-900);
+        padding: 35px 35px 0px 35px;
+
+        .socials {
+            align-self: flex-end;
+        }
+
+    }
+
+</style>

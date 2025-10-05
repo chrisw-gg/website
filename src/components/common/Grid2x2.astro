@@ -1,0 +1,38 @@
+
+<div class="grid2x2">
+    <span class="tl"><slot name="tl" /></span>
+    <span class="tr"><slot name="tr" /></span>
+    <span class="bl"><slot name="bl" /></span>
+    <span class="br"><slot name="br" /></span>
+</div>
+
+<style>
+
+    .grid2x2 {
+
+        display: grid;
+        grid-template-areas: 
+            "tl tr"
+            "bl br";
+
+        .tl {
+            grid-area: tl;
+        }
+
+        .tr {
+            grid-area: tr;
+            justify-self: end;
+        }
+
+        .bl {
+            grid-area: bl;
+        }
+
+        .br {
+            grid-area: br;
+            justify-self: end;
+        }
+        
+    }
+
+</style>

@@ -1,0 +1,23 @@
+---
+
+import DualColumnLayout from '@layouts/DualColumnLayout.astro';
+
+import Sidebar from '@components/Sidebar/Sidebar.astro';
+
+import { default as Mfcgames } from '@content/mfcgames/post.mdx'
+import { default as Doubletapgames } from '@content/doubletapgames/post.mdx'
+
+---
+
+<DualColumnLayout>
+
+	<Fragment slot="slot_sidebar">
+		<Sidebar />
+	</Fragment>
+
+	<Fragment slot="slot_content">
+		<Mfcgames />
+		<Doubletapgames />
+	</Fragment>
+
+</DualColumnLayout>

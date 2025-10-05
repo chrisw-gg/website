@@ -1,0 +1,104 @@
+---
+
+import { Image } from 'astro:assets';
+
+import Arrow from './Arrow.astro'
+import Pagination from './Pagination/Pagination.astro'
+
+const { images } = Astro.props;
+
+---
+
+<div class="swiper-container">
+
+    <div class="swiper">
+
+        <div class="swiper-wrapper">
+
+            {images.map(image => (
+                <div class="swiper-slide">
+                    <Image src={image} alt="" />
+                </div>
+            ))}
+
+        </div>
+
+        <Arrow type="left" />
+        <Arrow type="right" />
+
+    </div>
+
+    <Pagination images={images} />
+
+</div>
+
+<style>
+
+    .swiper-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .swiper {
+        border-radius: 20px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .swiper-slide {
+        background-color: var(--background-color-950);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+</style>
+
+<script>
+
+    import Swiper from 'swiper';
+    import { Navigation, Pagination } from 'swiper/modules';
+    
+    // import 'swiper/swiper-bundle.css';
+    import 'swiper/css'
+    import 'swiper/css/navigation'
+    import 'swiper/css/pagination'
+
+    document.querySelectorAll('.slideshow').forEach(slideshow => {
+
+        const swiperElement = slideshow.querySelector('.swiper');
+
+        const swiper = new Swiper(swiperElement, {
+            modules: [ Navigation, Pagination ],
+            centeredSlides: true,
+            spaceBetween: 25,
+            grabCursor: true
+        });
+
+        // Navigation
+
+        const leftArrow = slideshow.querySelector('.arrow.left');
+        const rightArrow = slideshow.querySelector('.arrow.right');
+
+        swiper.on('progress', function (swiper, progress) {
+            const leftArrowActive = progress > 0 ? 'true' : 'false';
+            const rightArrowActive = progress < 1 ? 'true' : 'false';
+
+            leftArrow.setAttribute('active', leftArrowActive);
+            rightArrow.setAttribute('active', rightArrowActive);
+        });
+
+        // Pagination
+
+        const pagination = slideshow.querySelector(".pagination");
+        const pacman = slideshow.querySelector(".pacman");
+        
+        swiper.on('progress', function (swiper, progress) {
+            const x = -(pagination.offsetWidth/2) + pagination.offsetWidth * progress;
+            pacman.style.transform = `translateX(${x}px)`;
+        });
+
+    });
+
+</script>

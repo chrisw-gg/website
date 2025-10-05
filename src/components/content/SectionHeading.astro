@@ -1,0 +1,16 @@
+---
+
+const { text = "" } = Astro.props;
+
+---
+
+<div class="section-heading">{ text }</div>
+
+<style>
+
+    .section-heading {
+        font-size: 2rem;
+        font-weight: var(--bold);
+    }
+
+</style>

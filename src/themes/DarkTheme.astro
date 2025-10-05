@@ -1,0 +1,29 @@
+---
+// Rename to black and white theme?
+---
+
+<style is:global>
+
+    /* Stealing number scheme from https://tailwindcss.com/docs/colors */
+    :root {
+        --background-color-950: rgb(25, 25, 35); /* body background */ 
+        --background-color-900: rgb(30, 30, 40); /* main content background */
+        --background-color-850: rgb(32, 32, 42); /* sidebar background */
+        --background-color-800: rgb(35, 35, 45); /* bio background start */
+        --background-color-750: rgb(37, 37, 50); /* bio background end */
+    }
+    
+    :root {
+        --font-default: "Inter", sans-serif;
+        --text-color-primary: white;
+        --text-color-secondary: #8c8c8e;
+        --text-color-accent: #b45f06;
+        --bold: 900;
+    }
+
+    :root {
+        /* #0a3861; */ /* #454483 */
+        --bio-background: linear-gradient(159deg, rgba(37,37,50,.98) 0%,rgba(35,35,45,.98) 100%)
+    }
+    
+</style>

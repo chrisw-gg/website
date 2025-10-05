@@ -1,0 +1,34 @@
+---
+
+import PageButton from './PageButton.astro'
+import Pacman from './Pacman.astro'
+
+const { images } = Astro.props;
+
+const height = '20px';
+
+---
+
+<span class="pagination">
+    {images.map(image => (
+        <PageButton />
+    ))}
+    <Pacman height={height} />
+</span>
+
+<style define:vars={{ height }}>
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        height: var(--height);
+        width: fit-content;
+
+        margin: 10px auto 0px auto;
+        gap: 3px;
+
+    }
+
+</style>
