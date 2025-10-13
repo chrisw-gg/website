@@ -2,28 +2,28 @@
 
 
 import Grid2x2 from '@components/common/Grid2x2.astro';
-import SectionHeading from './SectionHeading.astro';
-import SubSectionHeading from './SubSectionHeading.astro';
+import ArticleHeading from './ArticleHeading.astro';
+import ArticleSubHeading from './ArticleSubHeading.astro';
 
 const { heading, subheading, date } = Astro.props;
 
 ---
 
-<section>
+<article>
 
     <Grid2x2>
-        <SectionHeading text={ heading } slot="tl" />
-        <SubSectionHeading text={ date } slot="tr" />
-        <SubSectionHeading text={ subheading } slot="bl" />
+        <ArticleHeading text={ heading } slot="tl" />
+        <ArticleSubHeading text={ date } slot="tr" />
+        <ArticleSubHeading text={ subheading } slot="bl" />
     </Grid2x2>
 
     <slot />
 
-</section>
+</article>
 
 <style>
 
-    section {
+    article {
 
         background-color: var(--background-color-900);
         padding: 25px;

@@ -8,17 +8,17 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
     <header />
     
-    <main>
+    <div id='columns'>
         
-        <div id='side-column'>
+        <aside>
             <slot name='slot_sidebar' />
-        </div>
+        </aside>
 
-        <div id='main-column'>
+        <main>
             <slot name='slot_content' />
-        </div>
+        </main>
         
-    </main>
+    </div>
 
     <footer />
 
@@ -37,7 +37,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
     $SWITCH_TO_FLOATING_SIDEBAR: calc($CONTENT_WIDTH + $SIDEBAR_WIDTH + $COLUMN_GAP);
 
     /* Single Column Layout */
-    main {
+    #columns {
 
         display: flex;
         flex-direction: column;
@@ -47,7 +47,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         margin-top: $header_size;
         margin-bottom: $footer_size;
 
-        #side-column {
+        aside {
             background-color: var(--background-color-900);
             
             display: flex;
@@ -57,7 +57,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             width: 100%;
         }
 
-        #main-column {
+        main {
             display: flex;
             flex-direction: column;
 
@@ -81,13 +81,13 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             z-index: 100;
         }
 
-        main {
+        #columns {
 
             flex-direction: row;
             align-items: flex-start;
             justify-content: center;
 
-            #side-column {
+            aside {
                 height: calc(100vh - ($header_size + $footer_size));
                 overflow-x: hidden;
                 overflow-y: scroll;
@@ -96,7 +96,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
                 width: $SIDEBAR_WIDTH;
             }
 
-            #main-column {
+            main {
                 margin-left: $COLUMN_GAP;
             }
 
