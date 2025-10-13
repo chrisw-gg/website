@@ -1,0 +1,41 @@
+/*
+    TODO: Once Firefox implements it https://bugzilla.mozilla.org/show_bug.cgi?id=1795622
+    Can replace all instances with this:
+
+    @container style(--layout: single-column) {
+        .title {
+            ...
+        }
+    }
+
+    or
+
+    @container style(--layout: dual-column) {
+        .title {
+            ...
+        }
+    }
+
+*/
+
+$content_width: 1000px;
+$sidebar_width: 300px;
+
+$column_gap: 10px;
+
+$header_size: 25px;
+$footer_size: 25px;
+
+$threshold: calc($content_width + $sidebar_width + $column_gap);
+
+@mixin single-column-layout {
+    @media (max-width: $threshold) {
+        @content;
+    }
+}
+
+@mixin dual-column-layout {
+    @media (min-width: $threshold) {
+        @content;
+    }
+}

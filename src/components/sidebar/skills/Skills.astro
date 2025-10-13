@@ -2,13 +2,21 @@
     <slot />
 </div>
 
-<style>
+<style lang='scss'>
+
+    @use '/src/css/layout.scss' as *;
 
     .skills {
         display: flex;
         flex-flow: row wrap;
         gap: 10px;
         width: 100%;
+    }
+
+    @include single-column-layout {
+        .skills {
+            justify-content: space-between;
+        }
     }
 
 </style>

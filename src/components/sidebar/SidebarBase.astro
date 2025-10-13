@@ -20,43 +20,66 @@
 
 <style lang='scss'>
 
-    $padding: 25px;
-    $fade: 15px;
+    @use '/src/css/layout.scss' as *;
 
     .sidebar {
 
         display: flex;
         flex-direction: column;
-        height: 100%;
 
         .header {
             background: linear-gradient(159deg, var(--background-color-750) 0%, var(--background-color-800) 100%);
-            position: sticky;
-            top: 0px;
-            width: 100%;
         }
 
         .content {
             align-items: center;
             display: flex;
-            flex-direction: column;
+            flex-flow: column;
             gap: 10px;
-            padding: $padding;
-            flex-grow: 1;
-            overflow-x: hidden;
-            overflow-y: scroll;
-
-            mask-image: linear-gradient(
-                to bottom,
-                transparent 0px, transparent $fade, black $padding, black calc(100% - $padding), transparent calc(100% - $fade), transparent 100%
-            );
         }
 
         .footer {
             background: linear-gradient(159deg, var(--background-color-750) 0%, var(--background-color-800) 100%);
-            position: sticky;
-            bottom: 0px;
-            width: 100%;
+        }
+
+    }
+
+    @include dual-column-layout {
+        
+        .sidebar {
+
+            height: 100%;
+
+            .header {
+                position: sticky;
+                top: 0px;
+                width: 100%;
+            }
+
+            .content {
+
+                $padding: 25px;
+                $fade: 15px;
+
+                gap: 10px;
+                padding: $padding;
+                flex-grow: 1;
+                overflow-x: hidden;
+                overflow-y: scroll;
+
+                mask-image: linear-gradient(
+                    to bottom,
+                    transparent 0px, transparent $fade, black $padding, black calc(100% - $padding), transparent calc(100% - $fade), transparent 100%
+                );
+                
+            }
+
+            .footer {
+                position: sticky;
+                bottom: 0px;
+                width: 100%;
+            }
+
         }
 
     }

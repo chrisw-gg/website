@@ -26,17 +26,30 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
 <style lang='scss'>
 
-    $CONTENT_WIDTH: 1000px;
-    $SIDEBAR_WIDTH: 300px;
+    @use '/src/css/layout.scss' as *;
 
-    $COLUMN_GAP: 10px;
+    @property --layout {
+        syntax: 'single-column | dual-column';
+        inherits: true;
+        initial-value: single-column;
+    }
 
-    $header_size: 25px;
-    $footer_size: 25px;
+    :root {
+        --layout: single-column;
+    }
 
-    $SWITCH_TO_FLOATING_SIDEBAR: calc($CONTENT_WIDTH + $SIDEBAR_WIDTH + $COLUMN_GAP);
+    @include dual-column-layout {
+        :root {
+            --layout: dual-column;
+        }
+    }
 
-    /* Single Column Layout */
+</style>
+
+<style lang='scss'>
+
+    @use '/src/css/layout.scss' as *;
+
     #columns {
 
         display: flex;
@@ -53,7 +66,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             display: flex;
             flex-direction: column;
 
-            max-width: $CONTENT_WIDTH;
+            max-width: $content_width;
             width: 100%;
         }
 
@@ -63,14 +76,13 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
             gap: 10px;
 
-            max-width: $CONTENT_WIDTH;
+            max-width: $content_width;
             width: 100%;
         }
 
     }
 
-    /* Dual Column Layout */
-    @media (min-width: $SWITCH_TO_FLOATING_SIDEBAR) {
+    @include dual-column-layout {
 
         header {
             background-color: var(--background-color-950);
@@ -91,11 +103,11 @@ import BaseLayout from '@layouts/BaseLayout.astro';
                 height: calc(100vh - ($header_size + $footer_size));
                 position: sticky;
                 top: $header_size;
-                width: $SIDEBAR_WIDTH;
+                width: $sidebar_width;
             }
 
             main {
-                margin-left: $COLUMN_GAP;
+                margin-left: $column_gap;
             }
 
         }

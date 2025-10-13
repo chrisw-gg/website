@@ -20,7 +20,9 @@ const advancedElements = advanced.join(' ');
 
 </div>
 
-<style>
+<style lang='scss'>
+
+    @use '/src/css/layout.scss' as *;
 
     .skill {
 
@@ -57,6 +59,12 @@ const advancedElements = advanced.join(' ');
 
         }
 
+    }
+
+    @include single-column-layout {
+        .skill {
+            
+        }
     }
 
 </style>
