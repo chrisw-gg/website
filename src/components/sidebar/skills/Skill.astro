@@ -12,17 +12,10 @@ const advancedElements = advanced.join(' ');
 <div class="skill">
 
     <div class="title">{ title }</div>
-    
+
     <div class="rows">
-        
-        <div class="row expert">
-            { expertElements }
-        </div>
-
-        <div class="row advanced">
-            { advancedElements }
-        </div>
-
+        <div class="row expert">{ expertElements }</div>
+        <div class="row advanced">{ advancedElements }</div>
     </div>
 
 </div>
@@ -31,65 +24,37 @@ const advancedElements = advanced.join(' ');
 
     .skill {
 
-        display: flex;
-        flex-direction: column;
         align-content: center;
-
-        width: 100%;
+        display: flex;
+        flex-flow: column;
+        margin: 5px 0px 5px 0px;
 
         .title {
             color: var(--text-color-accent);
-            font-weight: var(--bold);
             font-size: 1.25rem;
+            font-weight: var(--bold);
             text-align: left;
-            stext-align: center;
         }
 
-        .break {
-            width: 100%;
-        }
+        .rows {
 
-        margin: 5px 0px 5px 0px;
-
-    }
-
-    .rows {
-
-        display: flex;
-        align-items: center;
-        xjustify-content: center;
-        flex-wrap: wrap;
-
-        gap: 7px;
-        margin-top: 6px;
-
-        .row {
-            min-width: 200px;
-        }
-        
-        .expert {
-            color: var(--text-color-primary);
-            font-size: 1.3rem;
-            Xfont-weight: var(--bold);
-        }
-
-        .advanced {
-            color: var(--text-color-secondary);
-            font-size: 1.3rem;
-        }
-
-        .break {
-            width: 100%;
-        }
-
-        .row {
+            align-items: left;
             display: flex;
+            flex-flow: column;
             gap: 7px;
-
-            div:not(:last-child)::after {
-                content: ",";
-                margin-left: 5px;
+            justify-content: left;
+            margin-top: 6px;
+            
+            .expert {
+                color: var(--text-color-primary);
+                font-size: 1.3rem;
             }
+
+            .advanced {
+                color: var(--text-color-secondary);
+                font-size: 1.3rem;
+            }
+
         }
 
     }
