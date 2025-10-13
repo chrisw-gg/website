@@ -1,0 +1,36 @@
+---
+
+const { title, group = [] } = Astro.props;
+
+const text = group.join(' - ');
+
+---
+
+<div class="tool">
+
+    <span class="check">✔</span>
+    <span class="text">{ text }</span>
+
+</div>
+
+<style>
+
+    .tool {
+
+        * {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .check {
+            color: var(--text-color-accent);
+            margin-right: 5px;
+        }
+
+        .text {
+            color: var(--text-color-secondary);
+        }
+
+    }
+
+</style>

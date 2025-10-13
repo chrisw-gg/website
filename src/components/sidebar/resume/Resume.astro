@@ -1,0 +1,43 @@
+---
+
+import DownloadIcon from '@icons/DownloadIcon.astro';
+
+const url = 'resume.pdf';
+
+---
+
+<a href={url} target='_blank'>
+	<div class='resume'>
+		<span>RESUME</span>
+		<DownloadIcon />
+</div>
+</a>
+
+<style>
+
+	a {
+		text-decoration: none;
+	}
+
+	.resume {
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 5px;
+
+		span {
+			color: var(--text-color-secondary);
+			font-weight: var(--bold);
+		}
+		
+		svg {
+			height: 25px;
+			path {
+				stroke: var(--text-color-secondary);
+			}
+		}
+
+	}
+
+</style>

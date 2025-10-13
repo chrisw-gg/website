@@ -1,32 +1,89 @@
 ---
 
-import Bio from '@components/sidebar/Bio.astro';
-import Skills from '@components/sidebar/Skills.astro';
+import Bio from './bio/Bio.astro';
+import Divider from './Divider.astro';
+import Resume from './resume/Resume.astro';
+import Skills from './skills/Skills.astro';
+import Skill from './skills/Skill.astro';
 import Socials from '@components/sidebar/Socials.astro';
+import Tools from './tools/Tools.astro';
+import Tool from './tools/Tool.astro';
+
+// TODO: Move content out of sidebar, should just be header/content/footer with slots
 
 ---
 
-<Bio />
-<div class="content">
-    <Skills />
-    <Socials />
+<div class='sidebar'>
+
+    <div class='header'>
+        <Bio />
+    </div>
+
+    <div class='content'>
+        <Skills>
+            <Skill title='Languages' expert={['C#', 'Java', 'Javascript']} advanced={['Python', 'Swift', 'Kotlin', 'C++']} />
+            <Skill title='Databases' expert={['Mysql', 'Postgres']} advanced={['Cassandra']} />
+            <Skill title='AWS' expert={['EC2', 'EKS', 'RDS']} advanced={['Route53', 'S3', 'VPC']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+                        <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+                        <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+        </Skills>
+        <Divider />
+        <Tools>
+            <Tool group={['Git', 'Subversion']} />
+            <Tool group={['Docker', 'Linux']} />
+            <Tool group={['Intellij', 'Rider']} />
+        </Tools>
+        <Divider />
+        <Resume />
+    </div>
+
+    <div class='footer'>
+        <Socials />
+    </div>
+
 </div>
 
 <style>
 
-    .content {
+    .sidebar {
 
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex: 1;
-        
-        background-color: var(--background-color-900);
-        padding: 35px 35px 0px 35px;
-
-        .socials {
-            align-self: flex-end;
+        .header {
+            background: linear-gradient(159deg, var(--background-color-750) 0%, var(--background-color-800) 100%);
+            position: sticky;
+            top: 0px;
+            width: 100%;
         }
+
+        .content {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 25px 25px 0px 25px;
+        }
+
+        .footer {
+            background: linear-gradient(159deg, var(--background-color-750) 0%, var(--background-color-800) 100%);
+            margin-top: 25px;
+            position: sticky;
+            bottom: 0px;
+            width: 100%;
+        }
+
+        .content {
+			xmask-image: linear-gradient(
+				to bottom,
+				transparent 0px, black 20px, black 100%
+			);
+			xoverflow-y: auto;
+		}
 
     }
 
