@@ -2,7 +2,7 @@
 
 import DualColumnLayout from '@layouts/DualColumnLayout.astro';
 
-import Sidebar from '@components/sidebar/Sidebar.astro';
+import ResumeSidebar from '@components/ResumeSidebar.astro';
 
 import { default as Mfcgames } from '@content/mfcgames/post.mdx'
 import { default as Doubletapgames } from '@content/doubletapgames/post.mdx'
@@ -12,7 +12,7 @@ import { default as Doubletapgames } from '@content/doubletapgames/post.mdx'
 <DualColumnLayout>
 
     <Fragment slot="slot_sidebar">
-        <Sidebar />
+        <ResumeSidebar />
     </Fragment>
 
     <Fragment slot="slot_content">

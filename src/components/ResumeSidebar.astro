@@ -1,0 +1,57 @@
+---
+
+import SidebarBase from './sidebar/SidebarBase.astro';
+
+import Bio from './sidebar/bio/Bio.astro';
+import Divider from './sidebar/Divider.astro';
+import Resume from './sidebar/resume/Resume.astro';
+import Skills from './sidebar/skills/Skills.astro';
+import Skill from './sidebar/skills/Skill.astro';
+import Socials from './sidebar/Socials.astro';
+import Tools from './sidebar/tools/Tools.astro';
+import Tool from './sidebar/tools/Tool.astro';
+
+---
+
+<SidebarBase>
+
+    <Fragment slot="header">
+        <Bio />
+    </Fragment>
+
+    <Fragment slot="content">
+
+        <Skills>
+            <Skill title='Languages' expert={['C#', 'Java', 'Javascript']} advanced={['Python', 'Swift', 'Kotlin', 'C++']} />
+            <Skill title='Databases' expert={['Mysql', 'Postgres']} advanced={['Cassandra']} />
+            <Skill title='AWS' expert={['EC2', 'EKS', 'RDS']} advanced={['Route53', 'S3', 'VPC']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+            <Skill title='Kubernetes' expert={['Pods', 'Gateways', 'Helm']} advanced={['Networking']} />
+        </Skills>
+
+        <Divider />
+
+        <Tools>
+            <Tool group={['Git', 'Subversion']} />
+            <Tool group={['Docker', 'Linux']} />
+            <Tool group={['Intellij', 'Rider']} />
+        </Tools>
+
+        <Divider />
+
+        <Resume />
+
+    </Fragment>
+
+    <Fragment slot="footer">
+        <Socials />
+    </Fragment>
+
+</SidebarBase>
