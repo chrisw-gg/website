@@ -11,27 +11,21 @@ const { images } = Astro.props;
 
 <div class='slideshow'>
 
-    <span>
+    <div class='swiper'>
 
-        <div class='swiper'>
+        <Arrow type='left' />
 
-            <Arrow type='left' />
+        <div class='swiper-wrapper'>
 
-            <div class='swiper-wrapper'>
-
-                {images.map(image => (
-                    <div class='swiper-slide'>
-                        <Image src={image} alt='' />
-                    </div>
-                ))}
-
-            </div>
-
-            <Arrow type='right' />
+            {images.map(image => (
+                <Image src={image} alt='' layout='constrained' class="swiper-slide" />
+            ))}
 
         </div>
 
-    </span>
+        <Arrow type='right' />
+
+    </div>
 
     <Pagination images={images} />
 
@@ -41,23 +35,21 @@ const { images } = Astro.props;
 
     .slideshow {
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         margin: 40px 0px;
-        
-        .swiper {
+
+        .swiper, img {
+            
             border-radius: 20px;
             overflow: hidden;
-            width: min(100%, 750px);
+
+            max-height: calc(100vh - 50px); /* don't allow images on mobile landscape to be larger than the height of the phone (plus ~50 pixels for pagination and margins) */
+            max-width: min(100vw, 750px);
+            aspect-ratio: auto 1024 / 768; /* This must be set explicitly so the swiper is a consistent size */
+        
         }
 
-        .swiper-slide {
-            background-color: var(--background-color-950);
-            border-radius: 20px;
-            overflow: hidden;
-            width: 100%;
+        img {
+            object-fit: contain;
         }
 
     }
@@ -68,11 +60,8 @@ const { images } = Astro.props;
 
     import Swiper from 'swiper';
     import { Navigation, Pagination } from 'swiper/modules';
-    
-    // import 'swiper/swiper-bundle.css';
+
     import 'swiper/css'
-    import 'swiper/css/navigation'
-    import 'swiper/css/pagination'
 
     document.querySelectorAll('.slideshow').forEach(slideshow => {
 
@@ -82,7 +71,7 @@ const { images } = Astro.props;
             modules: [ Navigation, Pagination ],
             grabCursor: true,
             centeredSlides: true,
-            slidesPerView: 'auto',
+            slidesPerView: 1,
             spaceBetween: 25
         });
 
