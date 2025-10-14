@@ -31,7 +31,9 @@ const { images } = Astro.props;
 
 </div>
 
-<style>
+<style lang='scss'>
+
+    @use '/src/css/layout.scss' as *;
 
     .slideshow {
 
@@ -39,12 +41,15 @@ const { images } = Astro.props;
 
         .swiper, img {
             
-            border-radius: 20px;
             overflow: hidden;
 
             max-height: calc(100vh - 50px); /* don't allow images on mobile landscape to be larger than the height of the phone (plus ~50 pixels for pagination and margins) */
             max-width: min(100vw, 750px);
             aspect-ratio: auto 1024 / 768; /* This must be set explicitly so the swiper is a consistent size */
+
+            @media (min-width: $content_width) {
+                border-radius: 20px;
+            }
         
         }
 

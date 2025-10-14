@@ -6,40 +6,51 @@ import headshot from '@assets/headshot.png';
 
 <div class="bio">
     <img class="headshot" src={ headshot.src } />
-    <div class="name">Chris Williams</div>
-    <div class="blurb">Software Developer</div>
+    <span>
+        <div class="name">Chris Williams</div>
+        <div class="blurb">Software Developer</div>
+    </span>
 </div>
 
-<style>
+<style lang='scss'>
+
+    @use '/src/css/layout.scss' as *;
 
     .bio {
+
         display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .bio {
-
         padding-top: 25px;
 
-        .headshot {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        @include single-column-layout {
+            align-items: center;
+            flex-flow: row wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .name {
-            font-size: 1.7rem;
-            font-weight: var(--bold);
-            padding-top: 10px;
+        @include dual-column-layout {
+            align-items: center;
+            flex-flow: column;
         }
 
-        .blurb {
-            color: var(--text-color-secondary);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
+    }
 
+    .headshot {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+
+    .name {
+        font-size: 1.7rem;
+        font-weight: var(--bold);
+        padding-top: 10px;
+    }
+
+    .blurb {
+        color: var(--text-color-secondary);
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
     }
 
 </style>

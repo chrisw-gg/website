@@ -31,6 +31,10 @@ const { heading, subheading, date } = Astro.props;
         padding: 25px;
         width: 100%;
 
+        @media (max-width: 600px) {
+            padding: 10px;
+        }
+
         p {
             font-size: 1.25rem;
             font-weight: 300;
