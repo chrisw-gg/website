@@ -10,11 +10,11 @@ import BaseLayout from '@layouts/BaseLayout.astro';
     
     <div id='columns'>
         
-        <aside>
+        <aside class='column'>
             <slot name='slot_sidebar' />
         </aside>
 
-        <main>
+        <main class='column'>
             <slot name='slot_content' />
         </main>
         
@@ -50,75 +50,89 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
     @use '/src/css/layout.scss' as *;
 
-    #columns {
+    @include any-layout {
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
+        #columns {
 
-        margin-top: $header_size;
-        margin-bottom: $footer_size;
-
-        aside {
-            background-color: var(--background-color-900);
-            
             display: flex;
-            flex-direction: column;
-
-            max-width: $content_width;
             width: 100%;
-        }
 
-        main {
-            display: flex;
-            flex-direction: column;
+            aside {
+                background-color: var(--background-color-900);
+            }
 
-            gap: 10px;
+            main {
+                max-width: $content_width;
+            }
 
-            max-width: $content_width;
-            width: 100%;
+            .column {
+                display: flex;
+                flex-flow: column;
+                width: 100%;
+            }
+
         }
 
     }
 
-    @include dual-column-layout {
-
-        header {
-            background-color: var(--background-color-950);
-            height: $header_size;
-            position: fixed;
-            top: 0px;
-            width: 100%;
-            z-index: 100;
-        }
+    @include single-column-layout {
 
         #columns {
 
-            flex-direction: row;
-            align-items: flex-start;
+            align-items: center;
+            flex-flow: column;
+            
+            main {
+                gap: 40px;
+            }
+
+            .column {
+                max-width: $content_width;
+                margin-bottom: 40px;
+            }
+            
+        }
+        
+    }
+
+    @include dual-column-layout {
+
+        #columns {
+
+            flex-flow: row;
             justify-content: center;
+
+            margin-bottom: $footer_size;
+            margin-top: $header_size;
 
             aside {
                 height: calc(100vh - ($header_size + $footer_size));
+                max-width: $sidebar_width;
                 position: sticky;
                 top: $header_size;
-                width: $sidebar_width;
             }
 
             main {
+                gap: $column_gap;
                 margin-left: $column_gap;
             }
 
         }
 
-        footer {
+        header, footer {
             background-color: var(--background-color-950);
-            bottom: 0px;
             height: $header_size;
             position: fixed;
             width: 100%;
             z-index: 100;
+        }
+
+        header {
+            top: 0px;
+        }
+
+        footer {
+            bottom: 0px;
         }
 
     }

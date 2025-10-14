@@ -26,12 +26,15 @@ const { heading, subheading, date } = Astro.props;
     article {
 
         background-color: var(--background-color-900);
+        contain: content;
+        overflow: hidden;
         padding: 25px;
+        width: 100%;
 
         p {
             font-size: 1.25rem;
-            line-height: 1.6rem;
             font-weight: 300;
+            line-height: 1.6rem;
         }
         
     }

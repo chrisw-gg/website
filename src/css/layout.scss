@@ -28,6 +28,10 @@ $footer_size: 25px;
 
 $threshold: calc($content_width + $sidebar_width + $column_gap);
 
+@mixin any-layout {
+    @content;
+}
+
 @mixin single-column-layout {
     @media (max-width: $threshold) {
         @content;
